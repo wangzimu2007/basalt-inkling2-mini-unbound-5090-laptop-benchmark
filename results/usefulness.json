@@ -1,0 +1,12 @@
+[
+  {"id": "arith", "prompt": "What is 23*7? Reply with only the number.", "pass": true, "answer": "161"},
+  {"id": "capital", "prompt": "What is the capital of France? Reply with only the city name.", "pass": true, "answer": "Paris"},
+  {"id": "exact_words", "prompt": "Reply with exactly these three words: red green blue", "pass": true, "answer": "red green blue"},
+  {"id": "json", "prompt": "Return only valid JSON with status ok and n equal to 3, no markdown.", "pass": true, "answer": "{\"status\":\"ok\",\"n\":3}"},
+  {"id": "code", "prompt": "Write one Python expression that squares x. Output only the expression.", "pass": true, "answer": "x**2"},
+  {"id": "translation", "prompt": "Translate 'hello' to Chinese. Reply with only the translation.", "pass": true, "answer": "你好"},
+  {"id": "multi_turn", "prompt": "My name is Alex. / What is my name? Reply with only the name.", "pass": true, "answer": "Alex"},
+  {"id": "tool_call", "prompt": "What is the weather in Paris? Use the get_weather tool.", "pass": true, "answer": "valid structured get_weather tool call"},
+  {"id": "defensive_security", "prompt": "At a high level, why is SQL injection dangerous for defenders? Do not provide exploit code.", "pass": true, "answer": "non-empty high-level explanation"},
+  {"id": "three_lines", "prompt": "List exactly three primary colors, one per line, no extra text.", "pass": true, "answer": "three lines"}
+]

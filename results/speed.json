@@ -1,0 +1,58 @@
+{
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 5090 Laptop GPU",
+    "vram_gb": 24,
+    "ram_gb": 64,
+    "os": "Windows 11 x64",
+    "nvidia_driver": "621.24"
+  },
+  "software": {
+    "engine": "Basalt 0.5.7",
+    "python": "3.12.14",
+    "cuda_runtime": "CUDA 13 DLLs from Ollama cuda_v13",
+    "model_repo": "nokeepai/Inkling-2-Mini-Unbound-Basalt",
+    "model_file": "Inkling-2-Mini-Unbound-v2.1-NVFP4-q8.basalt",
+    "model_bytes": 19734300538,
+    "model_sha256": "debb14727f2cbe4ab589ca464aa0f79dfe2f5883718330b63ea0eaa8fbc6fe05",
+    "max_context": 32768,
+    "kv": "int8",
+    "vision": "dynamic",
+    "port": 8095
+  },
+  "speed_512": {
+    "prompt": "Count from 1 to 200, separated by commas. Output only the numbers, no explanation.",
+    "settings": {
+      "temperature": 0,
+      "reasoning_effort": "low",
+      "reasoning_budget_tokens": 512,
+      "max_tokens": 2048
+    },
+    "runs": [
+      {"wall_ms": 2485, "completion_tokens": 907, "raw_tok_s": 364.97, "visible_chars": 691, "finish": "stop"},
+      {"wall_ms": 2438, "completion_tokens": 907, "raw_tok_s": 372.02, "visible_chars": 691, "finish": "stop"},
+      {"wall_ms": 2473, "completion_tokens": 907, "raw_tok_s": 366.63, "visible_chars": 691, "finish": "stop"}
+    ],
+    "average_wall_ms": 2465,
+    "average_raw_tok_s": 367.87,
+    "note": "Raw completion tokens/s includes reasoning tokens (1,042 reasoning chars per run). Visible answer was 691 chars."
+  },
+  "long_context": [
+    {"prompt_tokens": 7226, "wall_ms": 1261, "completion_tokens": 39, "answer": "OK"},
+    {"prompt_tokens": 14426, "wall_ms": 2300, "completion_tokens": 39, "answer": "OK"}
+  ],
+  "usefulness": {
+    "suite": "10 benign checkable tasks; not a harmful-prompt refusal benchmark",
+    "passed": 10,
+    "total": 10,
+    "rate_percent": 100
+  },
+  "workflow": {
+    "models_loaded": true,
+    "multi_turn": true,
+    "tool_call": true,
+    "vision_ocr": true,
+    "vision_text": "BASALT",
+    "streaming": true,
+    "long_context_16k": true
+  }
+}

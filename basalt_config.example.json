@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "models": [
+    {
+      "alias": "Inkling-2-Mini-Unbound",
+      "model": "C:/Basalt/models/Inkling-2-Mini-Unbound-v2.1-NVFP4-q8.basalt",
+      "gpu": "0",
+      "max-context": 32768,
+      "kv": "int8",
+      "vision": "dynamic"
+    }
+  ],
+  "engine": {
+    "vram-reserve-mib": 700,
+    "resident-experts": true
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8095
+  }
+}
