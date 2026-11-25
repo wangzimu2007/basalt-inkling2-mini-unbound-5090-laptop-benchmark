@@ -77,6 +77,22 @@ Filler: `The quick brown fox jumps over the lazy dog.` repeated 600 / 1200 / 180
 
 This is a stronger comparison than the 34-token prompt. It still uses the Basalt unbound pack vs the Strata official IQ3_S Qwen pack, so it is an engine/runtime comparison of these two deployments, not a controlled quantization A/B.
 
+## Extended context: 64K and 128K
+
+The same Basalt pack was restarted with larger `max-context`. Inkling's attention cache accepts only fp16/fp8/int8; `q4_0` is rejected. Results with `kv=int8`:
+
+| Configured context | Prompt tokens | Wall ms | Completion | Answer | GPU used |
+|---:|---:|---:|---:|---|---:|
+| 65,536 | 48,026 | 8,947 | 39 | OK | ~21.7 GB |
+| 65,536 | 54,026 | 9,484 | 39 | OK | ~21.7 GB |
+| 131,072 | 96,026 | 21,230 | 39 | OK | ~23.1 GB |
+| 131,072 | 120,026 | 29,078 | 39 | OK | ~23.1 GB |
+
+- 128K **loads and answers**, but only ~1.3 GB VRAM remains; it is close to the 24 GB limit.
+- 64K is the safer daily setting; 128K is for occasional long-document tests.
+- The model supports up to 1M context in principle, but 24 GB VRAM is the limiting factor, not MoE sparsity: attention KV is still dense per layer.
+- Raw files: `results/context-extension.json`.
+
 ## DSH integration
 
 Added a separate provider in `~/.dsh/profiles/desktop/cordis.patch.yml`:

@@ -1,0 +1,12 @@
+{
+  "engine": "Basalt 0.5.7",
+  "model": "Inkling-2-Mini-Unbound-v2.1-NVFP4-q8.basalt",
+  "kv": "int8",
+  "note": "q4_0 is rejected for Inkling; attention cache supports fp16/fp8/int8. 128K is near the 24GB limit.",
+  "tests": [
+    {"configured_context": 65536, "prompt_tokens": 48026, "wall_ms": 8947, "completion_tokens": 39, "answer": "OK", "gpu_used_mib": 21737},
+    {"configured_context": 65536, "prompt_tokens": 54026, "wall_ms": 9484, "completion_tokens": 39, "answer": "OK", "gpu_used_mib": 21737},
+    {"configured_context": 131072, "prompt_tokens": 96026, "wall_ms": 21230, "completion_tokens": 39, "answer": "OK", "gpu_used_mib": 23142},
+    {"configured_context": 131072, "prompt_tokens": 120026, "wall_ms": 29078, "completion_tokens": 39, "answer": "OK", "gpu_used_mib": 23142}
+  ]
+}
