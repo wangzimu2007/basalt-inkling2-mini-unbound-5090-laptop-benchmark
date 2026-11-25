@@ -1,0 +1,90 @@
+[
+  {
+    "model": "flashnext",
+    "context_config": "128k",
+    "case": "short",
+    "ms": 1402,
+    "prompt": 45,
+    "completion": 20,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 14.27
+  },
+  {
+    "model": "flashnext",
+    "context_config": "128k",
+    "case": "ctx8k",
+    "ms": 4828,
+    "prompt": 6048,
+    "completion": 52,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 10.77
+  },
+  {
+    "model": "flashnext",
+    "context_config": "128k",
+    "case": "ctx16k",
+    "ms": 6459,
+    "prompt": 12048,
+    "completion": 19,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 2.94
+  },
+  {
+    "model": "flashnext",
+    "context_config": "128k",
+    "case": "ctx32k",
+    "ms": 10453,
+    "prompt": 24048,
+    "completion": 19,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 1.82
+  },
+  {
+    "model": "flashnext",
+    "context_config": "128k",
+    "case": "ctx64k",
+    "ms": 13813,
+    "prompt": 48048,
+    "completion": 19,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 1.38
+  },
+  {
+    "model": "flashnext",
+    "context_config": "128k",
+    "case": "ctx96k",
+    "ms": 17600,
+    "prompt": 72048,
+    "completion": 19,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 1.08
+  },
+  {
+    "model": "flashnext",
+    "context_config": "128k",
+    "case": "gen512",
+    "ms": 11032,
+    "prompt": 59,
+    "completion": 512,
+    "chars": 1507,
+    "finish": "length",
+    "tps": 46.41
+  },
+  {
+    "model": "flashnext",
+    "context_config": "128k",
+    "case": "gen1536",
+    "ms": 16082,
+    "prompt": 59,
+    "completion": 1002,
+    "chars": 4410,
+    "finish": "stop",
+    "tps": 62.31
+  }
+]

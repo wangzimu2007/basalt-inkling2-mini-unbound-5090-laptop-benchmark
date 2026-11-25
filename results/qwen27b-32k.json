@@ -1,0 +1,68 @@
+[
+  {
+    "model": "qwen27b",
+    "context_config": "32k",
+    "case": "short",
+    "ms": 44819,
+    "prompt": 57,
+    "completion": 36,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 0.8
+  },
+  {
+    "model": "qwen27b",
+    "context_config": "32k",
+    "case": "ctx8k",
+    "ms": 5937,
+    "prompt": 6060,
+    "completion": 44,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 7.41
+  },
+  {
+    "model": "qwen27b",
+    "context_config": "32k",
+    "case": "ctx16k",
+    "ms": 7134,
+    "prompt": 12060,
+    "completion": 60,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 8.41
+  },
+  {
+    "model": "qwen27b",
+    "context_config": "32k",
+    "case": "ctx24k",
+    "ms": 7042,
+    "prompt": 18060,
+    "completion": 59,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 8.38
+  },
+  {
+    "model": "qwen27b",
+    "context_config": "32k",
+    "case": "gen512",
+    "ms": 16944,
+    "prompt": 71,
+    "completion": 512,
+    "chars": 0,
+    "finish": "length",
+    "tps": 30.22
+  },
+  {
+    "model": "qwen27b",
+    "context_config": "32k",
+    "case": "gen1536",
+    "ms": 54597,
+    "prompt": 71,
+    "completion": 1536,
+    "chars": 0,
+    "finish": "length",
+    "tps": 28.13
+  }
+]

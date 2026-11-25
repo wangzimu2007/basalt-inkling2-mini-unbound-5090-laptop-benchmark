@@ -1,0 +1,132 @@
+[
+  {
+    "model": "inkling",
+    "case": "short",
+    "ms": 2814,
+    "prompt": 20,
+    "completion": 39,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 13.86
+  },
+  {
+    "model": "inkling",
+    "case": "short2",
+    "ms": 2432,
+    "prompt": 20,
+    "completion": 39,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 16.04
+  },
+  {
+    "model": "inkling",
+    "case": "gen512",
+    "ms": 3343,
+    "prompt": 34,
+    "completion": 512,
+    "chars": 1601,
+    "finish": "length",
+    "tps": 153.16
+  },
+  {
+    "model": "inkling",
+    "case": "gen512b",
+    "ms": 3245,
+    "prompt": 34,
+    "completion": 512,
+    "chars": 1601,
+    "finish": "length",
+    "tps": 157.78
+  },
+  {
+    "model": "inkling",
+    "case": "gen1536",
+    "ms": 7318,
+    "prompt": 34,
+    "completion": 1115,
+    "chars": 4678,
+    "finish": "stop",
+    "tps": 152.36
+  },
+  {
+    "model": "inkling",
+    "case": "gen1536b",
+    "ms": 7293,
+    "prompt": 34,
+    "completion": 1115,
+    "chars": 4678,
+    "finish": "stop",
+    "tps": 152.89
+  },
+  {
+    "model": "inkling",
+    "case": "ctx8k",
+    "ms": 1178,
+    "prompt": 7224,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 29.71
+  },
+  {
+    "model": "inkling",
+    "case": "ctx16k",
+    "ms": 2167,
+    "prompt": 14424,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 16.15
+  },
+  {
+    "model": "inkling",
+    "case": "ctx32k",
+    "ms": 4465,
+    "prompt": 28824,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 7.84
+  },
+  {
+    "model": "inkling",
+    "case": "ctx64k",
+    "ms": 9906,
+    "prompt": 57624,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 3.53
+  },
+  {
+    "model": "inkling",
+    "case": "ctx96k",
+    "ms": 17378,
+    "prompt": 86424,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 2.01
+  },
+  {
+    "model": "inkling",
+    "case": "ctx120k",
+    "ms": 23711,
+    "prompt": 108024,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 1.48
+  },
+  {
+    "model": "inkling",
+    "case": "vision",
+    "ms": 1081,
+    "prompt": 158,
+    "completion": 101,
+    "chars": 6,
+    "finish": "stop",
+    "tps": 93.43
+  }
+]

@@ -77,6 +77,52 @@ Filler: `The quick brown fox jumps over the lazy dog.` repeated 600 / 1200 / 180
 
 This is a stronger comparison than the 34-token prompt. It still uses the Basalt unbound pack vs the Strata official IQ3_S Qwen pack, so it is an engine/runtime comparison of these two deployments, not a controlled quantization A/B.
 
+## Full matrix 2026-11-25
+
+Three models, same machine, serial runs (never loaded together). Raw files are in `results/`.
+
+### Generation (warm, same prompt)
+
+| Model / context | 512-token wall | 512 tok/s | 1536-token wall | 1536 tok/s | 1536 visible chars |
+|---|---:|---:|---:|---:|---:|
+| Inkling 128K | 3.25–3.34s | 153.2–157.8 | 7.29–7.32s | 152.4–152.9 | 4,678 |
+| Inkling 64K | 3.33s | 153.8 | 7.22s | 154.4 | 4,678 |
+| Inkling 32K | 3.35s | 152.7 | 7.29s | 153.0 | 4,678 |
+| FlashNext 128K | 11.03s | 46.4 | 16.08s | 62.3 | 4,410 |
+| FlashNext 32K | 7.76s | 66.0 | 11.41s | 87.5 | 4,197 |
+| Qwen27B 32K | 16.94s | 30.2 | 54.60s | 28.1 | **0** |
+
+Qwen27B's 1536-token case returned `finish=length` with empty visible content; that is recorded as a failure of useful output, not hidden.
+
+### Context wall time (short answer `OK`)
+
+| Model | 8K | 16K | 24K | 32K | 48K | 64K | 96K | 120K |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Inkling 32K config | 1.26s | 2.15s | 3.21s | — | — | — | — | — |
+| Inkling 64K config | 1.30s | 2.15s | — | 4.32s | 6.95s | — | — | — |
+| Inkling 128K config | 1.18s | 2.17s | — | 4.47s | — | 9.91s | 17.38s | 23.71s |
+| FlashNext 32K config | 4.63s | 6.35s | 8.82s | — | — | — | — | — |
+| FlashNext 128K config | 4.83s | 6.46s | — | 10.45s | — | 13.81s | 17.60s | — |
+| Qwen27B 32K | 5.94s | 7.13s | 7.04s | — | — | — | — | — |
+
+Short request latency: Inkling 2.43–2.81s, FlashNext 1.40s, Qwen27B 44.8s (cold model load; not a steady-state number).
+
+### 256K boundary
+
+Inkling/Basalt with `max-context=262144`, `kv=int8`:
+
+- loaded successfully
+- 192,026-token prompt: 61.713s, completion 39, answer OK
+- GPU 22.8GB, engine RAM tier ~4.0GB
+- **boundary only**; not a daily setting
+
+FlashNext 256K: Strata plan accepts it, but actual load was **not** tested on 24GB; no measured claim.
+
+### Quality gap
+
+- Inkling benign 10-task suite: **10/10** (from earlier).
+- FlashNext and Qwen27B quality suites were **not run** in this matrix; only speed/context data. Do not infer parity.
+
 ## Extended context: 64K and 128K
 
 The same Basalt pack was restarted with larger `max-context`. Inkling's attention cache accepts only fp16/fp8/int8; `q4_0` is rejected. Results with `kv=int8`:

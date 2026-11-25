@@ -1,0 +1,57 @@
+[
+  {
+    "model": "inkling",
+    "context_config": "32k",
+    "case": "ctx8k",
+    "ms": 1260,
+    "prompt": 7224,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 27.78
+  },
+  {
+    "model": "inkling",
+    "context_config": "32k",
+    "case": "ctx16k",
+    "ms": 2149,
+    "prompt": 14424,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 16.29
+  },
+  {
+    "model": "inkling",
+    "context_config": "32k",
+    "case": "ctx24k",
+    "ms": 3213,
+    "prompt": 21624,
+    "completion": 35,
+    "chars": 2,
+    "finish": "stop",
+    "tps": 10.89
+  },
+  {
+    "model": "inkling",
+    "context_config": "32k",
+    "case": "gen512",
+    "ms": 3352,
+    "prompt": 34,
+    "completion": 512,
+    "chars": 1601,
+    "finish": "length",
+    "tps": 152.74
+  },
+  {
+    "model": "inkling",
+    "context_config": "32k",
+    "case": "gen1536",
+    "ms": 7286,
+    "prompt": 34,
+    "completion": 1115,
+    "chars": 4678,
+    "finish": "stop",
+    "tps": 153.03
+  }
+]

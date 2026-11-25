@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-25",
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 5090 Laptop GPU, 24GB",
+    "ram_gb": 64,
+    "os": "Windows 11 x64",
+    "nvidia_driver": "621.24"
+  },
+  "models": {
+    "inkling": "Inkling-2-Mini-Unbound v2.1, Basalt 0.5.7, port 8095",
+    "flashnext": "Qwen3.8-Flash-Next IQ3_S Abliterated, Strata 0.1.67, port 8080",
+    "qwen27b": "Qwen3.8 27B Abliterated Q4_K_M, Ollama, port 11434"
+  },
+  "generation": {
+    "inkling_128k": {"gen512_ms": [3343, 3245], "gen512_tps": [153.16, 157.78], "gen1536_ms": [7318, 7293], "gen1536_tps": [152.36, 152.89], "chars": 4678},
+    "flashnext_128k": {"gen512_ms": 11032, "gen512_tps": 46.41, "gen1536_ms": 16082, "gen1536_tps": 62.31, "chars": 4410},
+    "qwen27b_32k": {"gen512_ms": 16944, "gen512_tps": 30.22, "gen1536_ms": 54597, "gen1536_tps": 28.13, "chars": 0, "note": "content empty; finish=length"}
+  },
+  "context_wall_ms": {
+    "inkling_128k": {"8k": 1178, "16k": 2167, "32k": 4465, "64k": 9906, "96k": 17378, "120k": 23711},
+    "inkling_64k": {"8k": 1299, "16k": 2146, "32k": 4316, "48k": 6948},
+    "inkling_32k": {"8k": 1260, "16k": 2149, "24k": 3213},
+    "flashnext_128k": {"8k": 4828, "16k": 6459, "32k": 10453, "64k": 13813, "96k": 17600},
+    "flashnext_32k": {"8k": 4629, "16k": 6352, "24k": 8816},
+    "qwen27b_32k": {"8k": 5937, "16k": 7134, "24k": 7042}
+  },
+  "short_latency_ms": {
+    "inkling_128k": [2814, 2432],
+    "flashnext_128k": 1402,
+    "qwen27b_32k": 44819
+  },
+  "quality": {
+    "inkling_benign_10": "10/10",
+    "flashnext": "not run in this matrix",
+    "qwen27b": "not run in this matrix"
+  },
+  "boundary_256k": {
+    "model": "inkling",
+    "configured_context": 262144,
+    "loaded": true,
+    "prompt_tokens": 192026,
+    "wall_ms": 61713,
+    "completion_tokens": 39,
+    "answer": "OK",
+    "gpu_used_mib": 22799,
+    "engine_ram_gib": 4.0,
+    "note": "Passes boundary but is not a daily-use setting; 192K prompt took 61.7s."
+  },
+  "flashnext_256k": {
+    "plan_supported": true,
+    "actual_load_tested": false,
+    "note": "Strata plan accepts 256K; not loaded on 24GB to avoid OOM; do not claim measured support."
+  },
+  "compaction": {
+    "policy": "DSH chat only; benchmark requests use direct APIs",
+    "auto": true,
+    "threshold_ratio": 0.8,
+    "headroom_tokens": 8192,
+    "retain_ratio": 0.5,
+    "max_tokens": 8192
+  }
+}
