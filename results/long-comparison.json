@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "context": "8k",
+      "basalt_warm_ms": 9914,
+      "basalt_tok_s": 142.72,
+      "strata_warm_ms": 15608,
+      "strata_tok_s": 60.8
+    },
+    {
+      "context": "16k",
+      "basalt_warm_ms": 8979,
+      "basalt_tok_s": 139.42,
+      "strata_warm_ms": 18451,
+      "strata_tok_s": 56.15
+    },
+    {
+      "context": "24k",
+      "basalt_warm_ms": 8796,
+      "basalt_tok_s": 127.79,
+      "strata_warm_ms": 17970,
+      "strata_tok_s": 55.53
+    }
+  ],
+  "note": "Same text, same instruction, same max_tokens=1536, temperature=0, reasoning_effort=low, reasoning_budget_tokens=512. Warm run = run 2. Tokenizers differ, so prompt-token counts differ."
+}

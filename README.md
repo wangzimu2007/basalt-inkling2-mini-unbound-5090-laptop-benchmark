@@ -54,6 +54,54 @@ The 907 completion tokens included 1,042 characters of `reasoning_content`; the 
 
 These are end-to-end wall times for prompt reading plus a 39-token answer. They are not pure prefill measurements.
 
+## Same-text long-prompt comparison: Basalt vs Strata
+
+The short 512-token test above was not enough to judge the engine. This comparison uses the **same reference text**, the same final instruction, the same `max_tokens=1536`, temperature 0, `reasoning_effort=low` and `reasoning_budget_tokens=512`. Two runs per context; the second (warm) run is the fair one.
+
+Filler: `The quick brown fox jumps over the lazy dog.` repeated 600 / 1200 / 1800 times.
+
+| Context | Engine | Warm wall ms | prompt tokens | completion tokens | visible chars | raw tok/s |
+|---|---|---:|---:|---:|---:|---:|
+| 8K | **Basalt 0.5.7** | **9,914** | 7,253 | 1,415 | 4,606 | **142.72** |
+| 8K | Strata 0.1.67 | 15,608 | 6,076 | 949 | 4,255 | 60.80 |
+| 16K | **Basalt 0.5.7** | **8,979** | 14,453 | 1,252 | 4,178 | **139.42** |
+| 16K | Strata 0.1.67 | 18,451 | 12,076 | 1,036 | 4,641 | 56.15 |
+| 24K | **Basalt 0.5.7** | **8,796** | 21,653 | 1,124 | 4,206 | **127.79** |
+| 24K | Strata 0.1.67 | 17,970 | 18,076 | 998 | 4,290 | 55.53 |
+
+- Basalt is about **2.3–2.5× faster** on these long, generation-heavy requests.
+- Token counts differ because the tokenizers differ, even though the input text is identical; compare wall time and completion tokens, not just prompt-token counts.
+- First runs were colder: Basalt 8K cold 12,722 ms (111.22 tok/s), 16K cold 11,586 ms (108.05), 24K cold 12,129 ms (92.67). Strata cold runs were 18,749 / 26,043 / 27,663 ms.
+- Both engines stopped normally (`finish=stop`) and produced 4.2–4.8K visible characters; no truncation.
+- Raw files: `results/compare-basalt.json`, `results/compare-strata.json`, `results/long-comparison.json`.
+
+This is a stronger comparison than the 34-token prompt. It still uses the Basalt unbound pack vs the Strata official IQ3_S Qwen pack, so it is an engine/runtime comparison of these two deployments, not a controlled quantization A/B.
+
+## DSH integration
+
+Added a separate provider in `~/.dsh/profiles/desktop/cordis.patch.yml`:
+
+```yaml
+basalt-local:
+  displayName: Basalt (local)
+  api: openai-completions
+  baseURL: http://127.0.0.1:8095/v1
+  apiKeyEnv: STRATA_API_KEY
+  defaultContextWindow: 32768
+  defaultMaxTokens: 8192
+  models:
+    - id: Inkling-2-Mini-Unbound
+      name: Inkling 2 Mini Unbound v2.1 (Basalt local)
+      contextWindow: 32768
+      maxTokens: 8192
+      input: [text, image]
+```
+
+- Strata stays on **8080/8081/8082** and is untouched.
+- Basalt is on **8095**; no port conflict.
+- DSH must be restarted to load the new provider.
+- On 24 GB, Strata 128K and Basalt cannot run at the same time; stop one before starting the other.
+
 ## Useful-answer suite
 
 Result: **10/10 (100%)** on this small benign suite.

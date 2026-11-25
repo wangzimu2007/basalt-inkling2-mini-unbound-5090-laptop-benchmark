@@ -1,0 +1,68 @@
+[
+  {
+    "engine": "basalt",
+    "case": "8k",
+    "run": 1,
+    "wall_ms": 12722,
+    "prompt_tokens": 7253,
+    "completion_tokens": 1415,
+    "content_chars": 4606,
+    "finish": "stop",
+    "completion_tps": 111.22
+  },
+  {
+    "engine": "basalt",
+    "case": "8k",
+    "run": 2,
+    "wall_ms": 9914,
+    "prompt_tokens": 7253,
+    "completion_tokens": 1415,
+    "content_chars": 4606,
+    "finish": "stop",
+    "completion_tps": 142.72
+  },
+  {
+    "engine": "basalt",
+    "case": "16k",
+    "run": 1,
+    "wall_ms": 11586,
+    "prompt_tokens": 14453,
+    "completion_tokens": 1252,
+    "content_chars": 4178,
+    "finish": "stop",
+    "completion_tps": 108.05
+  },
+  {
+    "engine": "basalt",
+    "case": "16k",
+    "run": 2,
+    "wall_ms": 8979,
+    "prompt_tokens": 14453,
+    "completion_tokens": 1252,
+    "content_chars": 4178,
+    "finish": "stop",
+    "completion_tps": 139.42
+  },
+  {
+    "engine": "basalt",
+    "case": "24k",
+    "run": 1,
+    "wall_ms": 12129,
+    "prompt_tokens": 21653,
+    "completion_tokens": 1124,
+    "content_chars": 4206,
+    "finish": "stop",
+    "completion_tps": 92.67
+  },
+  {
+    "engine": "basalt",
+    "case": "24k",
+    "run": 2,
+    "wall_ms": 8796,
+    "prompt_tokens": 21653,
+    "completion_tokens": 1124,
+    "content_chars": 4206,
+    "finish": "stop",
+    "completion_tps": 127.79
+  }
+]
