@@ -77,6 +77,25 @@ Filler: `The quick brown fox jumps over the lazy dog.` repeated 600 / 1200 / 180
 
 This is a stronger comparison than the 34-token prompt. It still uses the Basalt unbound pack vs the Strata official IQ3_S Qwen pack, so it is an engine/runtime comparison of these two deployments, not a controlled quantization A/B.
 
+## Agent benchmark (partial, 2026-11-25)
+
+Tool: **τ²-bench 2.0**, retail text domain, 40 steps, 300s/task, `max-concurrency=1`.
+Agent and user simulator are the **same model** (self-user), because no fixed independent user API was available. This is **not** directly comparable to the public τ² leaderboard.
+
+| Model | Simulations attempted | Evaluated | Passed | Avg reward (evaluated) | Infra errors | Note |
+|---|---:|---:|---:|---:|---:|---|
+| Inkling 2 Mini Unbound / Basalt | 10 | 7 | **6** | **0.857** | 3 | one task reward 0 |
+| FlashNext IQ3_S / Strata | 8 | 2 | 1 | 0.500 | 2 | stopped; not enough data |
+| Qwen27B Abliterated / Ollama | 3 | **2** | **2** | **1.000** | 0 | third task exceeded time budget |
+
+- Inkling tasks 0,1,6,7,8,9 passed with reward 1.0; task 5 failed (0.0); tasks 2,3,4 were infrastructure errors and excluded.
+- Qwen27B tasks 0 and 1 passed 1.0 at 135.4s and 103.0s; this is a real tool-agent loop, but only 2 tasks.
+- FlashNext did not produce enough valid runs; do not rank it from this data.
+- BFCL was installed (`D:\agent-bench`) but a custom local model entry was not completed, so **no BFCL score**.
+- Raw: `results/agent-tau2-20261125.json`.
+
+This agent test is separate from the text speed/context matrix. It exercises authentication, reads, writes, and DB state, but the self-user setup and small sample mean the scores are **indicative only**.
+
 ## Full matrix 2026-11-25
 
 Three models, same machine, serial runs (never loaded together). Raw files are in `results/`.

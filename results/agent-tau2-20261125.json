@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-25",
+  "benchmark": "tau2-bench 2.0, retail text, self-user simulator (same model as agent)",
+  "settings": {
+    "max_steps": 40,
+    "timeout_seconds": 300,
+    "max_concurrency": 1,
+    "agent": "openai-compatible local endpoint",
+    "user": "same model as agent (self-user)"
+  },
+  "caveat": "Not a fixed independent user simulator. Results are indicative, not directly comparable to public tau2 leaderboard scores. Infrastructure errors are reported separately.",
+  "models": {
+    "inkling": {
+      "endpoint": "http://127.0.0.1:8095/v1",
+      "model": "Inkling-2-Mini-Unbound",
+      "simulations": 10,
+      "evaluated": 7,
+      "passed": 6,
+      "failed": 1,
+      "infrastructure_errors": 3,
+      "average_reward_evaluated": 0.8571,
+      "task_results": [
+        {"task": "0", "reward": 1.0, "duration_s": 26.45},
+        {"task": "1", "reward": 1.0, "duration_s": 30.74},
+        {"task": "2", "reward": null, "termination": "infrastructure_error"},
+        {"task": "3", "reward": null, "termination": "infrastructure_error"},
+        {"task": "4", "reward": null, "termination": "infrastructure_error"},
+        {"task": "5", "reward": 0.0, "duration_s": 65.47},
+        {"task": "6", "reward": 1.0, "duration_s": 28.68},
+        {"task": "7", "reward": 1.0, "duration_s": 43.38},
+        {"task": "8", "reward": 1.0, "duration_s": 36.0},
+        {"task": "9", "reward": 1.0, "duration_s": 27.75}
+      ]
+    },
+    "flashnext": {
+      "endpoint": "http://127.0.0.1:8080/v1",
+      "model": "qwen3.8-flash-next-iq3_s",
+      "simulations_attempted": 8,
+      "evaluated": 2,
+      "passed": 1,
+      "failed": 1,
+      "infrastructure_errors": 2,
+      "note": "Run was stopped after repeated infrastructure errors and very long task durations; not enough data for a score."
+    },
+    "qwen27b": {
+      "endpoint": "http://127.0.0.1:11434/v1",
+      "model": "qwen3.8:27b-abliterated",
+      "simulations": 2,
+      "evaluated": 2,
+      "passed": 2,
+      "infrastructure_errors": 0,
+      "average_reward_evaluated": 1.0,
+      "task_results": [
+        {"task": "0", "reward": 1.0, "duration_s": 135.4},
+        {"task": "1", "reward": 1.0, "duration_s": 103.0}
+      ],
+      "note": "Third task exceeded the time budget and was stopped; only 2 tasks completed."
+    }
+  },
+  "bfcl": {
+    "installed": true,
+    "location": "D:\\agent-bench\\gorilla\\berkeley-function-call-leaderboard",
+    "score": null,
+    "note": "CLI works; custom local model entry not configured before time ran out, so no BFCL score."
+  },
+  "installed_size_gb": 2.59
+}
