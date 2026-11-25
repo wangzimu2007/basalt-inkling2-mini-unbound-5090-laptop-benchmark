@@ -1,0 +1,30 @@
+{
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 5090 Laptop GPU",
+    "vram_gb": 24,
+    "ram_gb": 64,
+    "os": "Windows 11 x64",
+    "nvidia_driver": "621.24"
+  },
+  "engines": {
+    "basalt": {"version": "0.5.7", "port": 8095},
+    "strata": {"version": "0.1.67", "port": 8080},
+    "ollama": {"port": 11434}
+  },
+  "dsh_compaction": {
+    "auto": true,
+    "threshold_ratio": 0.8,
+    "headroom_tokens": 8192,
+    "retain_ratio": 0.5,
+    "max_tokens": 8192,
+    "compaction_retries": 2,
+    "max_overflow_retries": 2,
+    "per_model_policy_examples": [
+      {"provider": "deepseek-account", "model": "deepseek-flash", "summarizer": "deepseek-account/deepseek-flash"},
+      {"provider": "ollama-local", "model": "qwen3.8:27b-abliterated", "note": "config comment: threshold about 65,536 tokens"},
+      {"provider": "strata-local", "model": "qwen3.8-flash-next-iq3_s", "summarizer": "summary-guard-local/summary-guard"},
+      {"provider": "basalt-local", "model": "Inkling-2-Mini-Unbound", "summarizer": "global default unless overridden"}
+    ],
+    "note": "The benchmark calls model APIs directly (Basalt 8095, Strata 8080, Ollama 11434), so DSH chat compaction does not alter these requests. Compaction only affects DSH conversation turns."
+  }
+}

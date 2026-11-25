@@ -93,6 +93,26 @@ The same Basalt pack was restarted with larger `max-context`. Inkling's attentio
 - The model supports up to 1M context in principle, but 24 GB VRAM is the limiting factor, not MoE sparsity: attention KV is still dense per layer.
 - Raw files: `results/context-extension.json`.
 
+## DSH compaction policy
+
+The DSH chat layer, not the API benchmark, uses:
+
+```yaml
+auto: true
+thresholdRatio: 0.8
+headroomTokens: 8192
+retainRatio: 0.5
+maxTokens: 8192
+compactionRetries: 2
+maxOverflowRetries: 2
+```
+
+- This is ratio/threshold based, not a fixed token count.
+- The effective threshold depends on each model's context window and output reserve; the config comment gives about 65,536 for Qwen 27B.
+- On compaction, older context is summarized and about 50% recent context is retained.
+- **All benchmark requests here call the model APIs directly** (Basalt 8095, Strata 8080, Ollama 11434), so DSH compaction does not alter the measured prompts or outputs. It only affects DSH chat sessions.
+- Metadata: `results/environment.json`.
+
 ## DSH integration
 
 Added a separate provider in `~/.dsh/profiles/desktop/cordis.patch.yml`:
