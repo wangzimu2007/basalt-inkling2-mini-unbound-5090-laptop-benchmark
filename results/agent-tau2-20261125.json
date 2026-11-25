@@ -35,12 +35,12 @@
     "flashnext": {
       "endpoint": "http://127.0.0.1:8080/v1",
       "model": "qwen3.8-flash-next-iq3_s",
-      "simulations_attempted": 8,
+      "simulations": 4,
       "evaluated": 2,
       "passed": 1,
       "failed": 1,
       "infrastructure_errors": 2,
-      "note": "Run was stopped after repeated infrastructure errors and very long task durations; not enough data for a score."
+      "note": "Several follow-up runs produced no simulations or only infrastructure errors; too few valid runs for a score."
     },
     "qwen27b": {
       "endpoint": "http://127.0.0.1:11434/v1",
@@ -60,8 +60,9 @@
   "bfcl": {
     "installed": true,
     "location": "D:\\agent-bench\\gorilla\\berkeley-function-call-leaderboard",
-    "score": null,
-    "note": "CLI works; custom local model entry not configured before time ran out, so no BFCL score."
+    "generated_cases": 32,
+    "scored": false,
+    "note": "simple_python generation stalled after 32 cases. Partial evaluation failed with a model-name escaping KeyError; no BFCL score is claimed."
   },
   "installed_size_gb": 2.59
 }

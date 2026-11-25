@@ -85,13 +85,13 @@ Agent and user simulator are the **same model** (self-user), because no fixed in
 | Model | Simulations attempted | Evaluated | Passed | Avg reward (evaluated) | Infra errors | Note |
 |---|---:|---:|---:|---:|---:|---|
 | Inkling 2 Mini Unbound / Basalt | 10 | 7 | **6** | **0.857** | 3 | one task reward 0 |
-| FlashNext IQ3_S / Strata | 8 | 2 | 1 | 0.500 | 2 | stopped; not enough data |
+| FlashNext IQ3_S / Strata | 4 | 2 | 1 | 0.500 | 2 | follow-up runs produced no valid sims; not enough data |
 | Qwen27B Abliterated / Ollama | 3 | **2** | **2** | **1.000** | 0 | third task exceeded time budget |
 
 - Inkling tasks 0,1,6,7,8,9 passed with reward 1.0; task 5 failed (0.0); tasks 2,3,4 were infrastructure errors and excluded.
 - Qwen27B tasks 0 and 1 passed 1.0 at 135.4s and 103.0s; this is a real tool-agent loop, but only 2 tasks.
 - FlashNext did not produce enough valid runs; do not rank it from this data.
-- BFCL was installed (`D:\agent-bench`) but a custom local model entry was not completed, so **no BFCL score**.
+- BFCL was installed (`D:\agent-bench`); a custom local model entry was added, but `simple_python` generation stalled after **32 cases** and partial evaluation hit a model-name escaping `KeyError`. **No BFCL score** is claimed.
 - Raw: `results/agent-tau2-20261125.json`.
 
 This agent test is separate from the text speed/context matrix. It exercises authentication, reads, writes, and DB state, but the self-user setup and small sample mean the scores are **indicative only**.
